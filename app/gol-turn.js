@@ -1,4 +1,4 @@
-import {split, tap, pipe, map, forEach} from 'ramda';
+import {split, tap, pipe, map, forEach, trim} from 'ramda';
 import {checkLength} from './lib/arrays';
 import {throwIf} from './lib/errors';
 import {stringBefore, stringAfter, stringContainsOnly} from './lib/strings';
@@ -32,6 +32,7 @@ const checkCharacters = (rows) => {
 
 const getDash = (dimensions) => pipe(
     stringAfter("\n"),
+    trim,
     split("\n"),
     tap(checkDimensions(dimensions)),
     tap(checkCharacters)

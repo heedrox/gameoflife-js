@@ -23,7 +23,8 @@ describe("GOL - turn calculator", () => {
         });
         describe("Right formats", () => {
             const VALID_INPUT = [
-                [ "one by one", "1 1\n." ]
+                [ "one by one", "1 1\n." ],
+                [ "four by eight", "4 8\n...*..*.\n...*..*.\n...*..*.\n...*....\n" ],
             ];
             VALID_INPUT.forEach(data => {
                 it("should NOT fail - "+data[0], () => {
