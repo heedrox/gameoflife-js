@@ -39,5 +39,9 @@ const golParseDimensions = pipe(
     tap(checkLength(2, INVALID_INPUT_MSG))
 );
 
+const golFullParseDash = (input) => {
+    const parser = golParseDash(golParseDimensions(input));
+    return parser(input);
+};
 
-export { golParseDash, golParseDimensions};
+export { golParseDash, golParseDimensions, golFullParseDash};
