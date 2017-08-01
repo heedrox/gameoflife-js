@@ -27,7 +27,8 @@ const golParseDash = (dimensions) => pipe(
     trim,
     split("\n"),
     tap(checkDimensions(dimensions)),
-    tap(checkCharacters)
+    tap(checkCharacters),
+    map(split(""))
 );
 
 const golParseDimensions = pipe(

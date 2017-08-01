@@ -1,4 +1,5 @@
 import { golTurn } from './gol-turn'
+import { golBuildDash } from './gol-builder'
 
 const INVALID_INPUT_MSG = "Invalid input. Please, use something like this: \n3 2\n.*\n*.\n..";
 
@@ -34,4 +35,13 @@ describe("GOL - turn calculator", () => {
         });
     });
 
+    describe("Calculates next turn", () => {
+        const INPUT = [
+            [ "1x1 dead, stays dead",  golBuildDash([["."]]), golBuildDash([["."]]) ],
+            [ "1x1 alive, dies",  golBuildDash([["*"]]), golBuildDash([["."]]) ]
+        ];
+        INPUT.forEach(data => {
+            it(data[0], () => expect(golTurn(data[1])).to.equal(data[2]));
+        });
+    });
 });
