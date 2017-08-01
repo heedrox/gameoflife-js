@@ -1,10 +1,10 @@
-import {getDimensions, getDash} from './gol-parser'
+import {golParseDimensions, golParseDash} from './gol-parser'
 
 export const golTurn = (input) => {
 
-    const dimensions = getDimensions(input);
+    const dimensions = golParseDimensions(input);
 
-    const dash = getDash(dimensions)(input);
+    const dash = golParseDash(dimensions)(input);
 
     return input;
 };

@@ -8,14 +8,6 @@ const throwInvalidMsgIf = throwIf(INVALID_INPUT_MSG);
 
 const checkNumber = (number) => throwInvalidMsgIf(isNaN(number));
 
-const getDimensions = pipe(
-    stringBefore("\n"),
-    split(" "),
-    tap(map(checkNumber)),
-    map(parseInt),
-    tap(checkLength(2, INVALID_INPUT_MSG))
-);
-
 const checkDimensions = (dimensions) => (rows) => {
     checkLength(dimensions[0], INVALID_INPUT_MSG)(rows);
     rows.forEach(checkLength(dimensions[1], INVALID_INPUT_MSG));
@@ -30,7 +22,7 @@ const checkCharacters = (rows) => {
     rows.forEach(checkValidRow);
 };
 
-const getDash = (dimensions) => pipe(
+const golParseDash = (dimensions) => pipe(
     stringAfter("\n"),
     trim,
     split("\n"),
@@ -38,4 +30,13 @@ const getDash = (dimensions) => pipe(
     tap(checkCharacters)
 );
 
-export { getDash, getDimensions};
+const golParseDimensions = pipe(
+    stringBefore("\n"),
+    split(" "),
+    tap(map(checkNumber)),
+    map(parseInt),
+    tap(checkLength(2, INVALID_INPUT_MSG))
+);
+
+
+export { golParseDash, golParseDimensions};
